@@ -337,54 +337,54 @@ document.addEventListener('DOMContentLoaded', () => {
             sparkle.remove();
         });
     }
-    
-    // Music player functionality - fixed to work properly
+
+    // Add click navigation for header on all pages
+    document.querySelectorAll('.header h1').forEach(function(h1) {
+        // Make the entire header clickable
+        var headerDiv = h1.parentElement;
+        headerDiv.style.cursor = 'pointer';
+        headerDiv.addEventListener('click', function () {
+            window.location = 'main.html';
+        });
+    });
+    // Ensure background music plays on pages where audio element exists
     const audio = document.getElementById('backgroundMusic');
     const toggleButton = document.getElementById('toggleMusic');
-
-    // Try to play music automatically
-    const playPromise = audio.play();
-
-    // Modern browsers require user interaction before playing audio
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            // Auto-play was prevented
-            console.log("Auto-play was prevented. Please click the play button.");
-            toggleButton.textContent = "▶ PLAY";
+    if (audio && toggleButton) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                console.log('Auto-play prevented, user interaction needed.');
+                toggleButton.textContent = '▶ PLAY';
+            });
+        }
+        toggleButton.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (audio.paused) {
+                audio.play();
+                toggleButton.textContent = '▐▐ PAUSE';
+            } else {
+                audio.pause();
+                toggleButton.textContent = '▶ PLAY';
+            }
+        });
+        // Auto-play on first click anywhere
+        let firstClick = true;
+        document.addEventListener('click', function () {
+            if (audio.paused && firstClick) {
+                audio.play().catch(() => {});
+                firstClick = false;
+                toggleButton.textContent = '▐▐ PAUSE';
+            }
         });
     }
 
-    // Toggle music play/pause
-    toggleButton.addEventListener('click', function (e) {
-        e.stopPropagation(); // Prevent document click handler from firing
-        
-        if (audio.paused) {
-            audio.play();
-            toggleButton.textContent = "▐▐ PAUSE";
-        } else {
-            audio.pause();
-            toggleButton.textContent = "▶ PLAY";
-        }
-    });
-
     // Old-school alert to notify user about music
     setTimeout(function () {
-        if (audio.paused) {
+        if (audio && audio.paused) {
             alert("⚠️ Click PLAY! ⚠️");
         }
     }, 3000);
-    
-    // Modified to only auto-play on first click, not every click
-    let firstClick = true;
-    document.addEventListener('click', function () {
-        if (audio.paused && firstClick) {
-            audio.play().catch(error => {
-                console.error("Audio playback failed:", error);
-            });
-            firstClick = false;
-            toggleButton.textContent = "▐▐ PAUSE";
-        }
-    });
 });
 
 // Update when user returns to the page, but don't increment counter unnecessarily
