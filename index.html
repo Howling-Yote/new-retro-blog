@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Unknown Anomaly</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000080;
+            background-image: url('./assets/img/bg.png');
+            background-repeat: repeat;
+            font-family: "Comic Sans MS", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .splash-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .enter-text {
+            font-size: 72px;
+            color: #00ff00;
+            text-shadow: 3px 3px #00ff00;
+            animation: glow 2s infinite alternate;
+            cursor: url('./assets/cursors/w98hand.cur'), pointer;
+            text-decoration: none;
+            display: block;
+            margin-top: 50px;
+        }
+
+        .enter-text:hover {
+            color: #ffff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .construction {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffff00;
+            font-size: 24px;
+            animation: blink 1s infinite;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+            background: linear-gradient(180deg, #00ff00 0%, transparent 100%);
+        }
+
+        /* Styles for side GIFs */
+        .side-gif {
+            position: fixed;
+            height: 150px;
+            z-index: 1;
+        }
+        
+        .left-gif {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .right-gif {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px #00ff00;
+            }
+            to {
+                text-shadow: 0 0 20px #00ff00;
+            }
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            color: #ffffff;
+            text-shadow: 0 0 2px #ffffff;
+            animation: sparkle-fade 0.6s linear forwards;
+            z-index: 9999;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        @keyframes sparkle-fade {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0.2);
+                opacity: 0;
+            }
+        }
+
+        /* Style for the middle GIF */
+        .middle-gif {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transform: scale(2);
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+        <!-- Add the 9.gif in the middle -->
+        <img src="./assets/img/28.gif" alt="Welcome GIF" class="middle-gif">
+        <a href="#" id="enterButton" class="enter-text">ENTER</a>
+    </div>
+
+    <!-- Add audio element for click sound -->
+    <audio id="clickSound" preload="auto">
+        <source src="./assets/audio/mouseclick.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Handle enter button click
+        document.getElementById('enterButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            const clickSound = document.getElementById('clickSound');
+            
+            // Play click sound and wait for it to finish before navigating
+            clickSound.play().then(() => {
+                // Add a small delay to let the sound play
+                setTimeout(() => {
+                    window.location.href = './main.html';
+                }, 100);
+            }).catch(error => {
+                // If sound can't play, just navigate
+                console.error("Sound play failed:", error);
+                window.location.href = './main.html';
+            });
+        });
+
+        // Add sparkle effect on mouse movement
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.2) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = '★';
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            document.body.appendChild(sparkle);
+
+            sparkle.addEventListener('animationend', () => {
+                sparkle.remove();
+            });
+        }
+
+        // Add some random sparkles on page load
+        for (let i = 0; i < 10; i++) {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }
+    </script>
+</body>
+</html> 

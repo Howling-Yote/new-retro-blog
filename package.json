@@ -1,0 +1,19 @@
+{
+    "name": "90s-blog",
+    "version": "1.0.0",
+    "description": "90s style blog with guestbook",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "ani-cursor": "^0.0.5",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.21.2",
+        "express-rate-limit": "^7.5.0",
+        "ip": "^2.0.1",
+        "mongoose": "^8.9.2"
+    }
+}

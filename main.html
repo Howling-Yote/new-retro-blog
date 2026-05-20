@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unknown Anomaly</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Additional styles for construction and guestbook sections */
+        .construction {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: #000040;
+            border: 2px solid #00ff00;
+            animation: blink 1s infinite;
+        }
+
+            .construction::before {
+                content: '🚧 UNDER CONSTRUCTION 🚧';
+                color: #ffff00;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+        .guestbook-header {
+            text-align: center;
+            color: #00ff00;
+            font-size: 24px;
+            text-shadow: 2px 2px #000;
+            margin: 20px 0;
+            padding: 10px;
+            background: #000040;
+            border: 2px solid #ff00ff;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- Add this right after the opening <body> tag -->
+    <audio id="backgroundMusic" loop>
+        <source src="./assets/audio/dp1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <div class="header">
+            <h1>Header</h1>
+            
+            <div class="nav-links">
+                <a href="about.html">About me</a> |
+                <a href="dos-games.html">Cool DOS games</a> |
+                <a href="picture-gallery.html">Picture Gallery</a> |
+                <a href="whats-out-there.html">What's out there?</a>
+            </div>
+            
+            <div class="welcome-banner">
+                <span style="font-size: 24px;">♦ You've arrived! We're so glad you're here. ♦</span>
+            </div>
+        </div>
+
+        <div class="music-controls">
+            <span class="music-icon">🎵</span>
+            <span id="songTitle">Now Playing: Disasterpeace - Day of Reflection.mp3</span>
+            <button id="toggleMusic" class="music-button">▐▐ PAUSE</button>
+        </div>
+
+        <marquee class="marquee">Welcome to my lil corner of de interwebz >:3 Best viewed in Netscape Navigator!</marquee>
+
+
+        <div class="counter" style="text-align: center;">
+            <div class="counter-text">
+                Visitors: <span id="visitorCount">000000</span>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <h2>Happy NYE and Y2K!!!</h2>
+            <p>Date: 12/31/1999</p>
+            <p>
+                OMG!! Y2K is coming!!1! I hope all of our computers survive :) Just adopted a new Owl Furby from the mall and I'm so in love, she's such a fluffy cutie.
+                Happy New Years everybody!
+            </p>
+        </div>
+
+        <div class="blog-post">
+            <h2>We're online!</h2>
+            <p>Date: 12/28/1999</p>
+            <p>
+                Finally got AOL! The dial-up sound is amazing rofl, can't wait to connect with everyone on da World Wide Web!
+                Mom's mad because she couldn't use the phone all day since I was browsing online lolz xD
+            </p>
+        </div>
+
+        <div class="gallery">
+            <h2>~ Picture gallery < 3 ~</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://s13.gifyu.com/images/SP1xp.gif" alt="My Puppy">
+                    <p>My puppy!</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s13.gifyu.com/images/SPyVo.gif" alt="My Computer">
+                    <p>My new Pentium PC!</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s13.gifyu.com/images/SPyVi.gif" alt="Birthday Party at Chuck E. Cheese!">
+                    <p>Birthday party @ Chuck E. Cheese '89!</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s13.gifyu.com/images/SPyyF.gif" alt="Pokemon Cards">
+                    <p>My Pokemon collection!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hacker-zone">
+            <h2 style="color: #00ff00; text-shadow: 2px 2px #000; text-align: center;">
+                -= H4ck3r Z0n3 n gifs! =-
+            </h2>
+            <div class="hacker-grid">
+                <div class="hacker-item">
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGdmbzQ1bWJ3cDYyeWthc21pNGQxZ3NhNzRkcHJ1bzJ0Mm8wdG82cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/128Ygie2wLdH5m/200w.webp" alt="Matrix Code" style="width: 200px; height: 220px;">
+                    <p>The Matrix is real!!1!</p>
+                </div>
+                <div class="hacker-item">
+                    <img src="https://media.tenor.com/2roX3uxz_68AAAAM/cat-space.gif" alt="Nyan Cat" style="width: 200px; height: 220px;">
+                    <p>Nyan Cat was here :3</p>
+                </div>
+                <div class="hacker-item">
+                    <img src="https://i.pinimg.com/originals/a8/e8/7b/a8e87bf4b0049119fed44393857a5278.gif" alt="Hacker" style="width: 200px; height: 220px;">
+                    <p>Pixel Sylveons!!</p>
+                </div>
+                <div class="hacker-item">
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhnajExYTFmc255dzkwZXZuOHpvbDJrc2M0MXM0ZHhvbm9kNmQ3YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwmNhd5H7YAz6/giphy.webp" alt="Cyber" style="width: 200px; height: auto;">
+                    <p>Surfin da web XD</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="construction"></div>
+
+        <div class="links">
+            <h3>Cool Links:</h3>
+            <a href="https://t.me/everlastingvacancy">My ICQ/Telegram</a> |
+            <a href="https://www.neopets.com/">My Neopets profile!</a> |
+            <a href="https://www.oocities.org/#gsc.tab=0">Geocities</a> |
+            <a href="https://poki.com/en/g/the-impossible-quiz">The Impossible Quiz!</a> |
+            <a href="#guestbook" onclick="showGuestbook()">Guestbook</a> |
+            <a href="https://www.heavensgate.com/">Super duper extra secret link :3c</a> |
+        </div>
+
+        <div id="guestbook" class="guestbook">
+            <div class="guestbook-header">
+                📖 Sign my guestbook! 📖
+            </div>
+            <div class="guestbook-form">
+    <form id="guestbookForm">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <input type="url" id="homepage" name="homepage" placeholder="Your Homepage URL">
+        <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Sign Guestbook!</button>
+        <div class="retro-note" style="margin-top: 10px; border: 1px dashed #00ff00; padding: 5px; color: #ffff00;">
+            <marquee scrollamount="3" direction="left" behavior="alternate">
+                ✧･ﾟ: Entries will appear after submission :･ﾟ✧
+            </marquee>
+        </div>
+    </form>
+</div>
+            <div id="guestbookEntries" class="guestbook-entries"></div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 20px;">
+            <div class="footer-buttons">
+                <img src="https://s13.gifyu.com/images/SPy1z.gif" alt=1 title="1">
+                <img src="https://s13.gifyu.com/images/SPyoq.gif" alt=2 title="2">
+                <img src="https://s7.gifyu.com/images/SPyor.gif" alt=3 title="3">
+                <img src="https://s7.gifyu.com/images/SPyo5.gif" alt=4 title="4">
+                <img src="https://s13.gifyu.com/images/SPyoe.gif" alt=5 title="5">
+                <img src="https://s13.gifyu.com/images/SPyoL.gif" alt=6 title="6">
+                <img src="https://s13.gifyu.com/images/SPyo1.gif" alt=7 title="7">
+                <img src="https://your-matrix-gif-url.gif" alt=8 title="8">
+                <img src="https://your-stars-gif-url.gif" alt=9 title="9">
+                <img src="https://your-hearts-gif-url.gif" alt=10 title="10">
+            </div>
+            <div style="background-color: #000; display: inline-block; padding: 5px; margin: 5px;">
+                <span style="color: #00ff00; font-family: 'Courier New';">Best viewed in 800x600</span>
+            </div>
+            <p>Questions? Email me at:</p>
+            <p>illuminatingtranscendence@gmail.com</p>
+            <p>© 1997 - Made with ♥ and HTML</p>
+        </footer>
+    </div>
+    <script src="./script.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <!-- Initialize Firebase -->
+    <script>
+        // Your Firebase configuration will be added in script.js
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Signing the Guestbook!</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .thanks-container {
+            text-align: center;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #000040;
+            border: 5px solid #ff00ff;
+            box-shadow: 10px 10px 0 #00ff00;
+        }
+        
+        .thanks-header {
+            color: #00ff00;
+            font-size: 32px;
+            text-shadow: 3px 3px #000;
+            animation: rainbow 3s infinite;
+        }
+        
+        .sparkles {
+            font-size: 24px;
+            letter-spacing: 5px;
+            margin: 20px 0;
+            animation: blink 1s infinite;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff00ff;
+            color: #fff;
+            border: 2px solid #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: url('./assets/cursors/w98hand.cur'), pointer;
+        }
+        
+        .back-button:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add background music -->
+    <audio autoplay loop>
+        <source src="./assets/audio/dp1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="thanks-container">
+        <h1 class="thanks-header">Thanks for signing my guestbook!</h1>
+        
+        <div class="sparkles">✧･ﾟ: *✧･ﾟ:* ⋆｡˚ ☆ ⋆｡˚ ☆ *:･ﾟ✧*:･ﾟ✧</div>
+        
+        <p style="color: #ffff00; font-size: 18px;">Your entry has been received and will be displayed on the guestbook!</p>
+        
+        <img src="https://s13.gifyu.com/images/SPy1z.gif" alt="Thank you" style="max-width: 200px; margin: 20px auto;">
+        
+        <p>Return to the main page to see your entry.</p>
+        
+        <a href="./main.html" class="back-button">Back to Main Page</a>
+    </div>
+    
+    <script>
+        // Create sparkle effect
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.2) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = '★';
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            document.body.appendChild(sparkle);
+
+            sparkle.addEventListener('animationend', () => {
+                sparkle.remove();
+            });
+        }
+        
+        // Add some random sparkles on page load
+        for (let i = 0; i < 10; i++) {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            createSparkle(x, y);
+        }
+        
+        // Redirect to main page after 5 seconds
+        setTimeout(() => {
+            window.location.href = './main.html';
+        }, 5000);
+    </script>
+</body>
+</html> 

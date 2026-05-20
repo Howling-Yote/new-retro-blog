@@ -1,0 +1,21 @@
+{
+  "rules": {
+    ".read": true,
+    "guestbookEntries": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["timestamp"],
+      "$entry": {
+        ".validate": "newData.hasChildren(['name', 'email', 'message', 'timestamp']) && newData.child('name').isString() && newData.child('name').val().length <= 100 && newData.child('email').isString() && newData.child('email').val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$/i) && newData.child('message').isString() && newData.child('message').val().length <= 1000 && newData.child('timestamp').isNumber() && newData.child('homepage').isString()"
+      }
+    },
+    "visitorCounter": {
+      ".read": true,
+      ".write": true,
+      ".validate": "newData.hasChildren(['count', 'lastUpdated']) && newData.child('count').isNumber() && newData.child('lastUpdated').isNumber()"
+    },
+    "$other": {
+      ".write": false
+    }
+  }
+} 
