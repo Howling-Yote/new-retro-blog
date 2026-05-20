@@ -137,7 +137,7 @@
     <div class="splash-container">
         <!-- Add the 9.gif in the middle -->
         <img src="./assets/img/28.gif" alt="Welcome GIF" class="middle-gif">
-        <a href="#" id="enterButton" class="enter-text">ENTER</a>
+        <a href="main.html" id="enterButton" class="enter-text">ENTER</a>
     </div>
 
     <!-- Add audio element for click sound -->
@@ -150,18 +150,27 @@
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             const clickSound = document.getElementById('clickSound');
+            const target = this.getAttribute('href');
             
             // Play click sound and wait for it to finish before navigating
-            clickSound.play().then(() => {
-                // Add a small delay to let the sound play
+            const playPromise = clickSound.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Add a small delay to let the sound play
+                    setTimeout(() => {
+                        window.location.href = target;
+                    }, 400); // 400ms delay to hear the click
+                }).catch(error => {
+                    // If sound can't play, just navigate
+                    console.error("Sound play failed:", error);
+                    window.location.href = target;
+                });
+            } else {
                 setTimeout(() => {
-                    window.location.href = './main.html';
-                }, 100);
-            }).catch(error => {
-                // If sound can't play, just navigate
-                console.error("Sound play failed:", error);
-                window.location.href = './main.html';
-            });
+                    window.location.href = target;
+                }, 400);
+            }
         });
 
         // Add sparkle effect on mouse movement
